@@ -3,12 +3,13 @@ import java.util.Scanner;
 
 public class TicTacToe {
 
-    public static void grid(String[][] table) {
+    public static void showGrid(String[][] table) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                System.out.print(" " + table[i][j] + " |");
+                if (j != 2) System.out.printf(" %s |" , table[i][j]);
+                else System.out.printf(" %s ", table[i][j]);
             }
-            if (i != 2) System.out.println("\n----|----|-----");
+            if (i != 2) System.out.print("\n---|---|---\n");
         }
     }
 
@@ -160,7 +161,7 @@ public class TicTacToe {
         boolean result = false;
         for (int j = 0; j < 4; j++) {
             player(table);
-            grid(table);
+            showGrid(table);
             if (table[0][0].equals("x") && table[0][1].equals("x") && table[0][2].equals("x")) {
                 System.out.println("You Won");
                 result = true;
@@ -211,7 +212,7 @@ public class TicTacToe {
 
             System.out.println("Computer's Turn");
             computer(table);
-            grid(table);
+            showGrid(table);
             if (table[0][0].equals("o") && table[0][1].equals("o") && table[0][2].equals("o")) {
                 System.out.println("You Lose");
                 result = true;
@@ -265,11 +266,11 @@ public class TicTacToe {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                table[i][j] = ("  ");
+                table[i][j] = (" ");
             }
         }
 
-        grid(table);
+        showGrid(table);
     }
 
 }
